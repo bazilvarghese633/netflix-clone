@@ -39,6 +39,7 @@ dependencies:
   video_player: ^2.9.2
   bordered_text: ^2.0.0
   cached_network_image: ^3.4.1
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:

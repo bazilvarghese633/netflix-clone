@@ -46,6 +46,7 @@ class _ScreenSearchState extends State<ScreenSearch> {
     List<Movie> result = await searchfunction(query);
     setState(() {
       istapped = false;
+
       searchResults = result;
     });
   }
@@ -126,7 +127,7 @@ class _ScreenSearchState extends State<ScreenSearch> {
 }
 
 Future<List<Movie>> searchfunction(String query) async {
-  const apiKey = '7641fb4a59c62af98a9d9234b5b798bd';
+  const apiKey = '8f5b4456154878ac0a131813a66e757e';
   const baseUrl = 'https://api.themoviedb.org/3/search/movie';
 
   int maxtries = 3;
@@ -150,3 +151,4 @@ Future<List<Movie>> searchfunction(String query) async {
   }
   return [];
 }
+//debouncer

@@ -35,17 +35,39 @@ class SearchResultWidget extends StatelessWidget {
   }
 }
 
+// class MainCard extends StatelessWidget {
+//   final String? url;
+//   const MainCard({super.key, this.url});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       decoration: BoxDecoration(
+//           image: DecorationImage(
+//               image: NetworkImage(imageUrl + url!), fit: BoxFit.cover),
+//           borderRadius: BorderRadius.circular(7)),
+//     );
+//   }
+// }
 class MainCard extends StatelessWidget {
   final String? url;
   const MainCard({super.key, this.url});
 
   @override
   Widget build(BuildContext context) {
+    // Use a valid base URL and check for null or empty poster path
+    final imageUrl = url != null && url!.isNotEmpty
+        ? 'https://image.tmdb.org/t/p/w500$url'
+        : 'https://via.placeholder.com/220x330?text=No+Image';
+
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(
-              image: NetworkImage(imageUrl + url!), fit: BoxFit.cover),
-          borderRadius: BorderRadius.circular(7)),
+        image: DecorationImage(
+          image: NetworkImage(imageUrl),
+          fit: BoxFit.cover,
+        ),
+        borderRadius: BorderRadius.circular(7),
+      ),
     );
   }
 }

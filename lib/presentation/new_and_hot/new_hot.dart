@@ -62,9 +62,9 @@ class _ScreenNewandHotState extends State<ScreenNewandHot> {
                 title: Text(
                   "New & Hot",
                   style: GoogleFonts.montserrat(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: whiteColor),
                 ),
                 actions: [
                   const Icon(
@@ -76,7 +76,13 @@ class _ScreenNewandHotState extends State<ScreenNewandHot> {
                   Container(
                     width: 30,
                     height: 30,
-                    color: Colors.blue,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage(
+                            'https://pbs.twimg.com/media/GB2vydcX0AAgt5f?format=png&name=360x360',
+                          ),
+                          fit: BoxFit.cover),
+                    ),
                   ),
                   constantWidth,
                 ],

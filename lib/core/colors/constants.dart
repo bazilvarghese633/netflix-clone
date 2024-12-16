@@ -22,7 +22,7 @@ final BorderRadius constantRadius = BorderRadius.circular(10);
 // images
 
 const homemainimage =
-    "https://image.tmdb.org/t/p/w600_and_h900_bestv2/imuZQcnPNKNygPw28TESUq4tNsb.jpg";
+    "https://media.themoviedb.org/t/p/w600_and_h900_bestv2/sjMN7DRi4sGiledsmllEw5HJjPy.jpg";
 
 //styles
 
