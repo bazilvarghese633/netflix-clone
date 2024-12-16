@@ -21,7 +21,8 @@ class _FastlaughScreenState extends State<FastlaughScreen> {
             children: List.generate(
               10,
               (index) {
-                return VideoListWidget(index: index);
+                return VideoListItemWidget(
+                    index: index, videourl: videoPathList[index]);
               },
             ),
           ),

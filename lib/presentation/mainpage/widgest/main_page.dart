@@ -16,10 +16,10 @@ class MainScreenPage extends StatefulWidget {
 
 class _MainScreenPageState extends State<MainScreenPage> {
   final _pages = [
-    const HomeScreen(),
-    const NewHotScreen(),
+    const ScreenHome(),
+    const ScreenNewandHot(),
     const FastlaughScreen(),
-    const SearchScreen(),
+    const ScreenSearch(),
     const DownloadScreen(),
   ];
 

@@ -1,30 +1,42 @@
+// ignore_for_file: body_might_complete_normally_nullable
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:netflix/application/models/model.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/colors/constants.dart';
 import 'package:netflix/presentation/Search/widgets/title.dart';
 
 const imageUrl =
-    "https://media.themoviedb.org/t/p/w1066_and_h600_bestv2/jlbUx0aHJupDVDlCo0R7UxSaUUd.jpg";
+    "https://media.themoviedb.org/t/p/w250_and_h141_face/fY3lD0jM5AoHJMunjGWqJ0hRteI.jpg";
 
-class SearchIdelWidget extends StatelessWidget {
-  const SearchIdelWidget({super.key});
+class SearchIdleWidget extends StatelessWidget {
+  final List<Movie> result;
+  const SearchIdleWidget({super.key, required this.result});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SearchtitleText(
-          title: "Top Searches",
-        ),
-        kheight,
+        const SearchtitleText(title: 'Top Searches'),
+        constantHeight,
         Expanded(
           child: ListView.separated(
             shrinkWrap: true,
-            itemBuilder: (ctx, index) => TopSearchItemTile(),
-            separatorBuilder: (ctx, index) => kheight20,
-            itemCount: 10,
+            itemBuilder: (context, index) {
+              if (index < result.length) {
+                return TopSearchItem(
+                    nameMovie: result[index].title,
+                    imageUrl: result[index].imagepath);
+              } else {
+                return const SizedBox.shrink();
+              }
+            },
+            separatorBuilder: (context, index) => SizedBox(
+              height: 20,
+            ),
+            itemCount: result.length,
           ),
         )
       ],
@@ -32,40 +44,46 @@ class SearchIdelWidget extends StatelessWidget {
   }
 }
 
-class TopSearchItemTile extends StatelessWidget {
-  TopSearchItemTile({super.key});
+class TopSearchItem extends StatelessWidget {
+  final String imageUrl;
+  final String nameMovie;
+
+  const TopSearchItem(
+      {super.key, required this.imageUrl, required this.nameMovie});
+
   @override
   Widget build(BuildContext context) {
-    final ScreenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Row(
       children: [
         Container(
-          width: ScreenWidth * 0.35,
+          width: screenWidth * 0.35,
           height: 65,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(imageUrl),
-            ),
-          ),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                    imageBase + imageUrl,
+                  ))),
         ),
-        kWidth,
-        const Expanded(
-          child: Text(
-            'Movie Name',
-            style: TextStyle(
-                color: whitecolor, fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-        ),
+        Expanded(
+            child: Text(
+          nameMovie,
+          style: const TextStyle(
+              color: whiteColor, fontWeight: FontWeight.bold, fontSize: 16),
+        )),
         const CircleAvatar(
-          backgroundColor: whitecolor,
+          backgroundColor: whiteColor,
           radius: 25,
           child: CircleAvatar(
-            backgroundColor: Colors.black,
+            backgroundColor: blackColor,
             radius: 23,
-            child: Icon(
-              CupertinoIcons.play,
-              color: whitecolor,
+            child: Center(
+              child: Icon(
+                CupertinoIcons.play_fill,
+                color: whiteColor,
+              ),
             ),
           ),
         )
